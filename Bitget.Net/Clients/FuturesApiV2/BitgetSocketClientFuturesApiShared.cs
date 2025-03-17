@@ -282,9 +282,8 @@ namespace Bitget.Net.Clients.FuturesApiV2
             if (tradingMode == TradingMode.PerpetualInverse || tradingMode == TradingMode.DeliveryInverse)
             {
                 return BitgetProductTypeV2.CoinFutures;
-            }
-
-            var productTypeStr = exchangeParameters!.GetValue<string>(Exchange, "ProductType");
+            } 
+            var productTypeStr = exchangeParameters?.GetValue<string>(Exchange, "ProductType") ?? ExchangeParameters.GetValue<string>(null,Exchange, "ProductType");
             return (BitgetProductTypeV2)Enum.Parse(typeof(BitgetProductTypeV2), productTypeStr);
         }
     }

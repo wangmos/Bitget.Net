@@ -1092,7 +1092,8 @@ namespace Bitget.Net.Clients.FuturesApiV2
                 return BitgetProductTypeV2.CoinFutures;
             }
 
-            var productTypeStr = ExchangeParameters.GetValue<string>(exchangeParameters, Exchange, "ProductType");
+            var productTypeStr = ExchangeParameters.GetValue<string>(exchangeParameters, Exchange, "ProductType")
+                ?? ExchangeParameters.GetValue<string>(null,Exchange, "ProductType");
             return (BitgetProductTypeV2)Enum.Parse(typeof(BitgetProductTypeV2), productTypeStr);
         }
 
